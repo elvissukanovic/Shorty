@@ -38,8 +38,8 @@ namespace Shorty
             mainSearch.Focus();
             if (!mainSearch.Focus())
             {
-                mainSearch.Dispatcher.BeginInvoke(
-                    DispatcherPriority.Input, new ThreadStart(delegate () { mainSearch.Focus(); })
+                mainSearch.Dispatcher?.BeginInvoke(
+                    DispatcherPriority.Input, new ThreadStart(delegate { mainSearch.Focus(); })
                 );
             }
         }

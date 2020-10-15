@@ -1,0 +1,34 @@
+.headerLinksContainer {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 50px auto;
+  width: 92%;
+}
+
+.headerLink {
+  cursor: pointer;
+  width: 110px;
+  height: 130px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1c222a;
+  -webkit-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
+}
+
+.headerLink:hover {
+  width: 110px;
+  height: 130px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1c222a;
+  -webkit-box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
+}
+
+.headerLink label {
+  cursor: pointer;
+}

@@ -43,7 +43,7 @@ export default function BodyLinksContainer() {
       <section className={styles.searchPart}>
         <input
           autoFocus
-          placeholder="search"
+          placeholder="test"
           onChange={handleFilterData}
           value={filterText}
         />

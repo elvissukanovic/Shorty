@@ -9,6 +9,7 @@ const store = configuredStore();
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 document.addEventListener('DOMContentLoaded', () => {
+  // DataManager.ResetData();
   // eslint-disable-next-line global-require
   const Root = require('./containers/Root').default;
   render(

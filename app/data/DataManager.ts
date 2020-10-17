@@ -7,6 +7,7 @@ const shortyStore = require('./DataStore');
 export default class DataManager {
   static async ResetData() {
     shortyStore.deleteAll();
+    DataManager.CreateAllHeaderLinks();
     DataManager.CreateAllBodyLinks();
     const gg = await shortyStore.readAll();
     console.log(gg);
@@ -85,13 +86,41 @@ export default class DataManager {
     });
   };
 
+  static CreateAllHeaderLinks = async () => {
+    const oooo = [
+      {
+        type: 'header',
+        name: 'GIT',
+        path: '',
+      },
+      {
+        type: 'header',
+        name: 'DOCS',
+        path: '',
+      },
+      {
+        type: 'header',
+        name: 'NAVIS',
+        path: '',
+      },
+      {
+        type: 'header',
+        name: 'REMOTES',
+        path: '',
+      },
+    ];
+    oooo.forEach((each) => {
+      shortyStore.db.insert(each);
+    });
+  };
+
   //  ---------------------------------------------------------------------------------------
   //  Header links
   //  ---------------------------------------------------------------------------------------
 
   static LoadAllHeaderLinks = async (): Promise<HeaderLinkData[]> => {
     let retData: HeaderLinkData[] = [];
-    retData = await shortyStore.readAllBody();
+    retData = await shortyStore.readAllHeader();
     return retData;
   };
 

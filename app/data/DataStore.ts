@@ -27,12 +27,21 @@ class ShortyStore {
   //  Header
   //  --------------------------------------------------------------------------
 
+  readAllHeader() {
+    return this.db.find({ type: 'header' }, (err: any, docs: any) => {
+      if (err) {
+        console.log(err);
+        return err;
+      }
+      return docs;
+    });
+  }
   //  --------------------------------------------------------------------------
   //  Body
   //  --------------------------------------------------------------------------
 
   readAllBody() {
-    return this.db.find(null, (err: any, docs: any) => {
+    return this.db.find({ type: 'body' }, (err: any, docs: any) => {
       if (err) {
         console.log(err);
         return err;

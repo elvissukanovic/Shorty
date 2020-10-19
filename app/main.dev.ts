@@ -16,15 +16,6 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 
-export default class AppUpdater {
-  constructor() {
-    console.log('jaja');
-    log.transports.file.level = 'info';
-    autoUpdater.logger = log;
-    autoUpdater.checkForUpdatesAndNotify();
-  }
-}
-
 let mainWindow: BrowserWindow | null = null;
 
 if (process.env.NODE_ENV === 'production') {
@@ -108,8 +99,10 @@ const createWindow = async () => {
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
-  new AppUpdater();
-  // autoUpdater.checkForUpdates();
+  log.transports.file.level = 'info';
+  autoUpdater.logger = log;
+  // autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
 };
 
 /**

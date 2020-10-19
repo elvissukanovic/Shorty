@@ -87,7 +87,7 @@ export default class DataManager {
   };
 
   static CreateAllHeaderLinks = async () => {
-    const oooo = [
+    const tmp = [
       {
         type: 'header',
         name: 'GIT',
@@ -109,9 +109,10 @@ export default class DataManager {
         path: '',
       },
     ];
-    oooo.forEach((each) => {
+    tmp.forEach((each) => {
       shortyStore.db.insert(each);
     });
+    return DataManager.LoadAllHeaderLinks();
   };
 
   //  ---------------------------------------------------------------------------------------
@@ -122,6 +123,10 @@ export default class DataManager {
     let retData: HeaderLinkData[] = [];
     retData = await shortyStore.readAllHeader();
     return retData;
+  };
+
+  static UpdateHeaderLinks = (headerLinks: HeaderLinkData[]) => {
+    shortyStore.updateHeaderLinks(headerLinks);
   };
 
   //  ---------------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ export default function HeaderLink(props: HeaderLinkData) {
     <div
       className={styles.headerLink}
       onClick={handleIconClick}
-      title={props.name}
+      title={props.path}
     >
       <span className="icon-body icon-folder" />
       <label>{props.name}</label>

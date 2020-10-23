@@ -6,11 +6,13 @@ const shortyStore = require('./DataStore');
 /* eslint-disable no-debugger */
 export default class DataManager {
   static async ResetData() {
+    /*
     shortyStore.deleteAll();
     DataManager.CreateAllHeaderLinks();
     DataManager.CreateAllBodyLinks();
     const gg = await shortyStore.readAll();
     console.log(gg);
+  */
   }
 
   static CreateAllBodyLinks = async () => {
@@ -84,6 +86,7 @@ export default class DataManager {
     oooo.forEach((each) => {
       shortyStore.db.insert(each);
     });
+    return DataManager.LoadAllBodyLinks();
   };
 
   static CreateAllHeaderLinks = async () => {
@@ -139,6 +142,10 @@ export default class DataManager {
     return retData;
   };
 
+  static CreateBodyLink = (bodyLink: BodyLinkData) => {
+    shortyStore.createBodyLink(bodyLink);
+  };
+
   static UpdateBodyLink = (bodyLink: BodyLinkData) => {
     shortyStore.updateBodyLink(bodyLink);
   };
@@ -149,37 +156,5 @@ export default class DataManager {
 
   static MoveUpBodyLink = (bodyLink: BodyLinkData) => {
     shortyStore.moveUpBodyLink(bodyLink);
-  };
-
-  static SaveAllHeaderLinks = () => {
-    const oooo = [
-      {
-        id: 0,
-        name: 'GIT',
-        path: 'C:\\inetpub',
-      },
-      {
-        id: 1,
-        name: 'DOCS',
-        path: 'C:\\inetpub',
-      },
-      {
-        id: 2,
-        name: 'REMOTES',
-        path: 'D:\\_tmp\\shorty ikone',
-      },
-      {
-        id: 3,
-        name: 'NAVIS',
-        path: 'D:\\_tmp\\prod',
-      },
-    ];
-    localStorage.setItem('shortyHeaderLinks', JSON.stringify(oooo));
-  };
-
-  static SaveAllBodyLinks = (allLinks: BodyLinkData[]) => {
-    console.log(allLinks);
-    localStorage.removeItem('shortyBodyLinks');
-    localStorage.setItem('shortyBodyLinks', JSON.stringify(allLinks));
   };
 }

@@ -2,7 +2,7 @@ export interface BodyLinkData {
   _id: string;
   order: number;
   type: string;
-  company: string;
+  name: string;
   // paths
   docpath: string;
   gitpath: string;

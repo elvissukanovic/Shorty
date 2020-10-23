@@ -1,7 +1,8 @@
+const { remote } = require('electron');
+
 export default class AppHelper {
   static minimizeAppWindow = () => {
-    const remote = window.require ? window.require('electron').remote : null;
-    const WIN = remote?.getCurrentWindow();
-    WIN?.minimize();
+    const tmp = remote.BrowserWindow.getFocusedWindow();
+    if (tmp) tmp.minimize();
   };
 }

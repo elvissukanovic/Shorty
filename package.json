@@ -94,6 +94,12 @@
         "nsis"
       ]
     },
+    "nsis": {
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": true
+    },
     "linux": {
       "target": [
         "deb",

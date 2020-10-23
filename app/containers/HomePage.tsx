@@ -3,9 +3,10 @@
 import React from 'react';
 import HeaderLinksContainer from './HeaderLinksContainer';
 import BodyLinksContainer from './bodyLinksContainer';
+import DataManager from '../data/DataManager';
 
 export default function HomePage() {
-  //DataManager.ResetData();
+  DataManager.ResetData();
 
   return (
     <div>

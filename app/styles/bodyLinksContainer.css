@@ -9,12 +9,22 @@
 
 .searchPart input {
   min-width: 500px;
-  width: 25%;
+  width: 60%;
   padding: 8px;
   font-size: 20px;
   border-radius: 4px;
   border: none;
   text-align: center;
+}
+.searchPart label {
+  color: #4183f5;
+  cursor: pointer;
+  position: absolute;
+  right: 50px;
+  margin-top: 14px;
+}
+.addNewPart {
+  border: 1px solid green;
 }
 
 .linksPart {
@@ -38,37 +48,6 @@
   width: 100%;
   display: block;
   font-size: 20px;
-}
-
-.bodyLinkLinksWrapper {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-.bodyLinkLinksWrapper div {
-  width: 110px;
-  height: 130px;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #1c222a;
-  -webkit-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-  box-shadow: 0px 4px 16px 1px rgba(0, 0, 0, 1);
-}
-
-.bodyLinkLinksWrapper div:hover {
-  width: 110px;
-  height: 130px;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #1c222a;
-  -webkit-box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 4px 24px 1px rgba(0, 0, 0, 0.75);
-}
-
-.bodyLinkLinksWrapper label {
-  cursor: pointer;
 }
 
 .bodyLinkActions {
@@ -100,11 +79,11 @@
 
 .bodyLinkEdit {
   display: flex;
-  max-height: 0;
+  height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: height 0.2s ease-out;
   width: 60%;
-  margin: 30px auto 0;
+  margin: 40px auto;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -132,4 +111,35 @@
   border: none;
   border-radius: 4px;
   padding: 4px 10px;
+}
+
+.bodyLinkLinksWrapper {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.bodyLinkLinksWrapper > div {
+  width: 110px;
+  height: 130px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1c222a;
+  -webkit-box-shadow: 0 4px 16px 1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 4px 16px 1px rgba(0, 0, 0, 1);
+  box-shadow: 0 4px 16px 1px rgba(0, 0, 0, 1);
+}
+
+.bodyLinkLinksWrapper > div:hover {
+  width: 110px;
+  height: 130px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1c222a;
+  -webkit-box-shadow: inset 0 4px 24px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 4px 24px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 4px 24px 1px rgba(0, 0, 0, 0.75);
+}
+
+.bodyLinkLinksWrapper div label {
+  cursor: pointer;
 }

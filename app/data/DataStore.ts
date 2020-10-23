@@ -1,10 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 import { BodyLinkData } from './models/BodyLinkData';
 import { HeaderLinkData } from './models/HeaderLinkData';
 
-/* eslint-disable no-underscore-dangle */
 const Datastore = require('nedb-promises');
+const electron = require('electron');
 
-const dbPath = `${process.cwd()}/shorty.db`;
+const userDataPath = (electron.app || electron.remote.app).getPath('userData');
+const dbPath = `${userDataPath}\\shorty.db`;
 
 class ShortyStore {
   db: any;
@@ -16,7 +18,7 @@ class ShortyStore {
     });
   }
 
-  read(_id: any) {
+  read(_id: string) {
     return this.db.findOne({ _id }).exec();
   }
 
@@ -45,7 +47,6 @@ class ShortyStore {
       return this.db.update({ _id: each._id }, each, {}, this.handleResponse);
     });
   };
-
   //  --------------------------------------------------------------------------
   //  Body
   //  --------------------------------------------------------------------------
@@ -53,6 +54,10 @@ class ShortyStore {
   readAllBody() {
     return this.db.find({ type: 'body' }, this.handleResponse);
   }
+
+  createBodyLink = (bodyLink: BodyLinkData) => {
+    this.db.insert(bodyLink, this.handleResponse);
+  };
 
   updateBodyLink = (bodyLink: BodyLinkData) => {
     return this.db.update(
@@ -83,11 +88,7 @@ class ShortyStore {
   };
 
   deleteAll() {
-    // return this.db.deleteAll();
-    this.db.remove({}, { multi: true }, (err: any, numRemoved: number) => {
-      console.log(`deleted: ${numRemoved}`);
-      console.log(err);
-    });
+    this.db.remove({}, { multi: true });
   }
 }
 

@@ -6,6 +6,6 @@
     "name": "elvis sukanovic",
     "email": "elvis.sukanovic@gmail.com"
   },
-  "version": "1.4.1",
+  "version": "1.4.6",
   "main": "./main.prod.js"
 }

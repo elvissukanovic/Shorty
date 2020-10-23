@@ -11,13 +11,20 @@ import styles from '../styles/bodyLinksContainer.css';
 import AppHelper from '../AppHelper';
 import DataManager from '../data/DataManager';
 
+const { exec } = require('child_process');
+
 export default function BodyLink(props: BodyLinkData) {
   const [bodyLink, setBodyLink] = useState(props);
 
   const handleIconClick = (path: string) => {
-    // Open a local file in the default app
-    shell.openItem(path);
-    AppHelper.minimizeAppWindow();
+    if (path) {
+      if (path.includes('finsql.exe')) {
+        exec(path);
+      } else {
+        shell.openItem(path);
+      }
+      AppHelper.minimizeAppWindow();
+    }
   };
 
   const handleMoveUp = () => {
@@ -28,10 +35,10 @@ export default function BodyLink(props: BodyLinkData) {
   const handleEdit = () => {
     const editPart = document.getElementById(`bodyLinkEdit${bodyLink._id}`);
     if (editPart) {
-      if (editPart.style.maxHeight !== '') {
-        editPart.style.maxHeight = '';
+      if (editPart.style.height !== '') {
+        editPart.style.height = '';
       } else {
-        editPart.style.maxHeight = '300px';
+        editPart.style.height = '300px';
       }
     }
   };
@@ -46,7 +53,7 @@ export default function BodyLink(props: BodyLinkData) {
     handleEdit();
   };
 
-  const handleChange = (target: any) => {
+  const handleChange = (target: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target.currentTarget;
 
     switch (name) {
@@ -72,7 +79,7 @@ export default function BodyLink(props: BodyLinkData) {
 
   return (
     <section className={styles.bodyLink}>
-      <label className={styles.bodyLinkTitle}>{bodyLink.company}</label>
+      <label className={styles.bodyLinkTitle}>{bodyLink.name}</label>
 
       <label className={styles.bodyLinkDelete} onClick={handleDelete}>
         delete

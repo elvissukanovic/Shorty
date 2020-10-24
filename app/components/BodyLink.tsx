@@ -15,6 +15,7 @@ const { exec } = require('child_process');
 
 export default function BodyLink(props: BodyLinkData) {
   const [bodyLink, setBodyLink] = useState(props);
+  let multiClick: string[] = [];
 
   const handleIconClick = (path: string) => {
     if (path) {
@@ -23,8 +24,23 @@ export default function BodyLink(props: BodyLinkData) {
       } else {
         shell.openItem(path);
       }
-      AppHelper.minimizeAppWindow();
     }
+
+    multiClick.forEach((eachPath) => {
+      if (eachPath !== path) {
+        if (eachPath.includes('finsql.exe')) {
+          exec(eachPath);
+        } else {
+          shell.openItem(eachPath);
+        }
+      }
+    });
+    multiClick = [];
+    AppHelper.minimizeAppWindow();
+  };
+
+  const handleRightIconClick = (path: string) => {
+    multiClick.push(path);
   };
 
   const handleMoveUp = () => {
@@ -92,6 +108,7 @@ export default function BodyLink(props: BodyLinkData) {
       <div className={styles.bodyLinkLinksWrapper}>
         <div
           onClick={() => handleIconClick(bodyLink.gitpath)}
+          onContextMenu={() => handleRightIconClick(bodyLink.gitpath)}
           title={bodyLink.gitpath}
         >
           <span className="icon-body icon-folder" />
@@ -99,6 +116,7 @@ export default function BodyLink(props: BodyLinkData) {
         </div>
         <div
           onClick={() => handleIconClick(bodyLink.vspath)}
+          onContextMenu={() => handleRightIconClick(bodyLink.vspath)}
           title={bodyLink.vspath}
         >
           <span className="icon-body icon-vs" />
@@ -106,6 +124,7 @@ export default function BodyLink(props: BodyLinkData) {
         </div>
         <div
           onClick={() => handleIconClick(bodyLink.devopspath)}
+          onContextMenu={() => handleRightIconClick(bodyLink.devopspath)}
           title={bodyLink.devopspath}
         >
           <span className="icon-body icon-www" />
@@ -113,6 +132,7 @@ export default function BodyLink(props: BodyLinkData) {
         </div>
         <div
           onClick={() => handleIconClick(bodyLink.navpath)}
+          onContextMenu={() => handleRightIconClick(bodyLink.navpath)}
           title={bodyLink.navpath}
         >
           <span className="icon-body icon-nav" />
@@ -120,6 +140,7 @@ export default function BodyLink(props: BodyLinkData) {
         </div>
         <div
           onClick={() => handleIconClick(bodyLink.webpath)}
+          onContextMenu={() => handleRightIconClick(bodyLink.webpath)}
           title={bodyLink.webpath}
         >
           <span className="icon-body icon-www" />

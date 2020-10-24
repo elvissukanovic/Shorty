@@ -38,7 +38,7 @@ export default function BodyLink(props: BodyLinkData) {
       if (editPart.style.height !== '') {
         editPart.style.height = '';
       } else {
-        editPart.style.height = '300px';
+        editPart.style.height = '320px';
       }
     }
   };

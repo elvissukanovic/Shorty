@@ -157,4 +157,18 @@ export default class DataManager {
   static MoveUpBodyLink = (bodyLink: BodyLinkData) => {
     shortyStore.moveUpBodyLink(bodyLink);
   };
+
+  static CreateEmptyBodyLink = (): BodyLinkData => {
+    const tmp: BodyLinkData = {} as BodyLinkData;
+    tmp.type = 'body';
+    tmp.order = 0;
+    tmp.name = '';
+    tmp.docpath = '';
+    tmp.gitpath = '';
+    tmp.vspath = '';
+    tmp.devopspath = '';
+    tmp.navpath = '';
+    tmp.webpath = '';
+    return tmp;
+  };
 }

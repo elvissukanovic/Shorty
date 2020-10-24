@@ -13,7 +13,7 @@ import { BodyLinkData } from '../data/models/BodyLinkData';
 import styles from '../styles/bodyLinksContainer.css';
 
 export default function BodyLinksContainer() {
-  let newLink: BodyLinkData = {} as BodyLinkData;
+  let newLink = DataManager.CreateEmptyBodyLink();
   const empty: BodyLinkData[] = [];
   const [bodyLinksArray, setBodyLinksArray] = useState(empty);
   const [filterText] = useState('');
@@ -46,15 +46,16 @@ export default function BodyLinksContainer() {
     if (addNewPart) {
       if (addNewPart.style.height !== '') {
         addNewPart.style.height = '';
+        addNewPart.style.marginBottom = '0';
       } else {
-        addNewPart.style.height = '308px';
+        addNewPart.style.height = '330px';
+        addNewPart.style.marginBottom = '40px';
       }
     }
   };
 
   const handleChange = (target: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target.currentTarget;
-    console.log(name, value);
     switch (name) {
       case 'name':
         newLink.name = value;
@@ -80,9 +81,8 @@ export default function BodyLinksContainer() {
   };
 
   const handleSave = () => {
-    newLink.type = 'body';
     DataManager.CreateBodyLink(newLink);
-    newLink = {} as BodyLinkData;
+    newLink = DataManager.CreateEmptyBodyLink();
     reloadList();
 
     // reset forme
